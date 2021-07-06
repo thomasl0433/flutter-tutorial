@@ -10,17 +10,34 @@ void main() => runApp(MyApp());
 class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    final wordPair = WordPair.random();
     return MaterialApp(
       title: 'Welcome to Flutter',
       home: Scaffold(
         appBar: AppBar(
-          title: const Text('Welcome to Flutter'),
+          title: RandomWords(),
         ),
         body: Center(
-          child: Text(wordPair.asPascalCase),
+          child: RandomWords(),
         ),
       ),
     );
+  }
+}
+
+// immutable and can be thrown away and regenerated
+class RandomWords extends StatefulWidget {
+  const RandomWords({Key? key}) : super(key: key);
+
+  @override
+  _RandomWordsState createState() => _RandomWordsState();
+}
+
+// - contains most of the apps logic
+// - persists over the lifetime of the widget
+class _RandomWordsState extends State<RandomWords> {
+  @override
+  Widget build(BuildContext context) {
+    final wordPair = WordPair.random();
+    return Text(wordPair.asPascalCase, style: TextStyle(fontSize: 50));
   }
 }
