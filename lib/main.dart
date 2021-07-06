@@ -12,6 +12,7 @@ void main() => runApp(MyApp());
 class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
+    print('inside MyApp');
     return MaterialApp(title: 'Startup Name Generator', home: RandomWords());
   }
 }
@@ -31,6 +32,7 @@ class _RandomWordsState extends State<RandomWords> {
   final _biggerFont = const TextStyle(fontSize: 18.0);
 
   Widget _buildSuggestions() {
+    print('inside _buildSuggestions()');
     return ListView.builder(
         padding: const EdgeInsets.all(16.0),
         itemBuilder: /*1*/ (context, i) {
@@ -45,6 +47,7 @@ class _RandomWordsState extends State<RandomWords> {
   }
 
   Widget _buildRow(WordPair pair) {
+    print('inside _buildRow()');
     return ListTile(
         title: Text(
       pair.asPascalCase,
@@ -54,6 +57,7 @@ class _RandomWordsState extends State<RandomWords> {
 
   @override
   Widget build(BuildContext context) {
+    print("inside _RandomWordsState build()");
     return Scaffold(
         appBar: AppBar(
           title: const Text('Startup Name Generator'),
